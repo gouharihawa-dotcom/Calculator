@@ -1,0 +1,225 @@
+:root {
+    color-scheme: dark;
+    --page-bg: #111827;
+    --glow-one: rgba(56, 189, 248, 0.15);
+    --glow-two: rgba(168, 85, 247, 0.15);
+    --shell: rgba(24, 32, 48, 0.92);
+    --shell-border: rgba(255, 255, 255, 0.08);
+    --display: rgba(7, 12, 24, 0.72);
+    --button: #253047;
+    --button-hover: #303d56;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --accent: #7c3aed;
+    --accent-hover: #8b5cf6;
+    --function: #ef4444;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 20% 15%, var(--glow-one), transparent 30%),
+        radial-gradient(circle at 80% 85%, var(--glow-two), transparent 30%),
+        var(--page-bg);
+    transition: background 0.35s ease, color 0.35s ease;
+}
+
+body.light-mode {
+    color-scheme: light;
+    --page-bg: #e8eef8;
+    --glow-one: rgba(14, 165, 233, 0.18);
+    --glow-two: rgba(124, 58, 237, 0.14);
+    --shell: rgba(255, 255, 255, 0.88);
+    --shell-border: rgba(15, 23, 42, 0.08);
+    --display: rgba(226, 232, 240, 0.75);
+    --button: #edf2f7;
+    --button-hover: #dfe7f1;
+    --text: #172033;
+    --muted: #64748b;
+}
+
+.calculator {
+    width: min(390px, 100%);
+    padding: 18px;
+    border: 1px solid var(--shell-border);
+    border-radius: 28px;
+    background: var(--shell);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(16px);
+}
+
+.calculator-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 4px 14px;
+}
+
+.calculator-header p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.theme-toggle {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--shell-border);
+    border-radius: 50%;
+    color: var(--text);
+    background: var(--button);
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: rotate(12deg);
+    background: var(--button-hover);
+}
+
+.display-wrap {
+    min-height: 126px;
+    margin-bottom: 14px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    overflow: hidden;
+    border: 1px solid var(--shell-border);
+    border-radius: 18px;
+    background: var(--display);
+}
+
+.history {
+    min-height: 22px;
+    margin-bottom: 6px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+}
+
+.display {
+    width: 100%;
+    color: var(--text);
+    font-size: clamp(2.2rem, 11vw, 3.4rem);
+    font-weight: 650;
+    line-height: 1;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.button {
+    min-height: 66px;
+    border: 1px solid rgba(255, 255, 255, 0.035);
+    border-radius: 16px;
+    color: var(--text);
+    background: var(--button);
+    font: inherit;
+    font-size: 1.25rem;
+    font-weight: 650;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+    transition: transform 0.08s ease, background 0.18s ease, box-shadow 0.18s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.button:hover {
+    background: var(--button-hover);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
+}
+
+.button:active,
+.button.clicked {
+    transform: scale(0.94);
+}
+
+.button:focus-visible,
+.theme-toggle:focus-visible {
+    outline: 3px solid rgba(124, 58, 237, 0.55);
+    outline-offset: 2px;
+}
+
+.button.operator {
+    color: #a78bfa;
+}
+
+body.light-mode .button.operator {
+    color: #7c3aed;
+}
+
+.button.function {
+    color: #fb7185;
+}
+
+.button.ac,
+.button.del {
+    background: rgba(239, 68, 68, 0.14);
+}
+
+.button.ac:hover,
+.button.del:hover {
+    background: rgba(239, 68, 68, 0.23);
+}
+
+.button.equal {
+    grid-column: span 2;
+    color: white;
+    background: var(--accent);
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.28);
+}
+
+.button.equal:hover {
+    background: var(--accent-hover);
+}
+
+@media (max-width: 420px) {
+    body {
+        padding: 10px;
+    }
+
+    .calculator {
+        border-radius: 22px;
+    }
+
+    .button {
+        min-height: 58px;
+        border-radius: 14px;
+    }
+}
+
+@media (max-height: 620px) {
+    .calculator {
+        width: min(340px, 100%);
+    }
+
+    .display-wrap {
+        min-height: 92px;
+    }
+
+    .button {
+        min-height: 48px;
+    }
+}

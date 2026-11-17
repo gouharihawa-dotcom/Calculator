@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111827">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="calculator" aria-label="Calculator">
+        <div class="calculator-header">
+            <p>Calculator</p>
+            <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch theme">
+                <span class="theme-icon" aria-hidden="true">☀</span>
+            </button>
+        </div>
+
+        <div class="display-wrap">
+            <div class="history" aria-live="polite"></div>
+            <div class="display" role="status" aria-live="polite">0</div>
+        </div>
+
+        <div class="buttons">
+            <button class="button function ac" type="button">AC</button>
+            <button class="button function del" type="button">DEL</button>
+            <button class="button operator" type="button">%</button>
+            <button class="button operator" type="button">÷</button>
+
+            <button class="button" type="button">7</button>
+            <button class="button" type="button">8</button>
+            <button class="button" type="button">9</button>
+            <button class="button operator" type="button">*</button>
+
+            <button class="button" type="button">4</button>
+            <button class="button" type="button">5</button>
+            <button class="button" type="button">6</button>
+            <button class="button operator" type="button">-</button>
+
+            <button class="button" type="button">1</button>
+            <button class="button" type="button">2</button>
+            <button class="button" type="button">3</button>
+            <button class="button operator" type="button">+</button>
+
+            <button class="button" type="button">00</button>
+            <button class="button" type="button">0</button>
+            <button class="button equal" type="button">=</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
